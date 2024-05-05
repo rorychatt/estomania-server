@@ -17,6 +17,10 @@ class HexGrid {
             }
         }
     }
+
+    getGridData() {
+        return this.grid;
+      }
 }
 
 export default HexGrid;
