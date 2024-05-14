@@ -2,7 +2,8 @@ import express from "express";
 import { Server as SocketIOServer } from "socket.io";
 import http from "http";
 import cors from "cors";
-import HexGridMap from "./HexGrid";
+import HexGridMap from "./HexGridMap";
+import { Game } from "./Game";
 
 const app = express();
 app.use(cors({ origin: "http://localhost:8080" }));
@@ -15,18 +16,18 @@ const io = new SocketIOServer(server, {
     },
 });
 
-const mapSettings = {
+const gameSettings = {
     mapSize: {
         x: 20,
         z: 10,
     },
 };
 
-const hexGrid = new HexGridMap(mapSettings.mapSize);
+const game = new Game(gameSettings)
 
 io.on("connection", (socket) => {
     console.log("A user connected");
-    socket.emit("mapData", hexGrid.getGridData());
+    socket.emit("gameData", game);
 
     socket.on("disconnect", () => {
         console.log("User disconnected");
