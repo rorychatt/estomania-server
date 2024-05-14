@@ -1,11 +1,8 @@
-type Vector2D = {
-    x: number;
-    z: number;
-};
+import { Vector2D } from "./Game";
 
 class Hexagon {
     position: Vector2D;
-
+    
     constructor(position: Vector2D) {
         this.position = position;
     }
