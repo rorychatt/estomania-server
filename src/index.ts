@@ -4,6 +4,7 @@ import http from "http";
 import cors from "cors";
 import HexGridMap from "./HexGridMap";
 import { Game } from "./Game";
+import { Player } from "./Player";
 
 const app = express();
 app.use(cors({ origin: "http://localhost:8080" }));
@@ -27,10 +28,11 @@ const game = new Game(gameSettings)
 
 io.on("connection", (socket) => {
     console.log("A user connected");
+    game.addPlayer(new Player(socket.id))
     socket.emit("gameData", game);
-
     socket.on("disconnect", () => {
         console.log("User disconnected");
+        game.removePlayerBySocketID(socket.id)
     });
 });
 
