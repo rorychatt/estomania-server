@@ -2,7 +2,6 @@ import express from "express";
 import { Server as SocketIOServer } from "socket.io";
 import http from "http";
 import cors from "cors";
-import HexGridMap from "./HexGridMap";
 import { Game } from "./Game";
 import { Player } from "./Player";
 

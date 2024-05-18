@@ -1,5 +1,5 @@
 import { GameSettings } from "./GameSettings";
-import HexGridMap from "./HexGridMap";
+import { HexGridMap } from "./HexGridMap";
 import { Player } from "./Player";
 
 export class Game {

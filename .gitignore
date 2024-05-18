@@ -1,1 +1,4 @@
 node_modules
+types
+dist
+!types/index.d.ts

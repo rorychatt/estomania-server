@@ -1,12 +1,17 @@
 {
   "name": "estomania-server",
-  "version": "1.0.3",
+  "version": "1.0.3-prerelease-12",
   "description": "server for estomania",
   "main": "index.js",
   "scripts": {
     "start": "ts-node src/index.ts",
-    "dev": "nodemon src/index.ts"
+    "dev": "nodemon src/index.ts",
+    "build": "npm install && tsc --project tsconfig.json"
   },
+  "types": "./types",
+  "files": [
+    "./types"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",

@@ -10,3 +10,7 @@ server for estomania
 - Start the server by running the following command:
 
 `npm run start`
+
+# Private publish
+
+npm publish --access-restricted
