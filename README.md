@@ -14,3 +14,7 @@ server for estomania
 # Private publish
 
 npm publish --access-restricted
+
+# Start the server in hot-reload (dev) mode:
+
+`npm run dev`
