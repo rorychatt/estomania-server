@@ -3,6 +3,7 @@ import { Vector2D } from "./Game";
 class Hexagon {
     position: Vector2D;
     tileType: PossibleTileType;
+    ownerUUID?: `${string}-${string}-${string}-${string}-${string}`
 
     constructor(position: Vector2D) {
         this.position = position;
@@ -13,6 +14,14 @@ class Hexagon {
         const terrains: PossibleTileType[] = ["plains", "water"];
         const randomIndex = Math.floor(Math.random() * terrains.length);
         return terrains[randomIndex];
+    }
+
+    setOwner(tileOwnerUUID: `${string}-${string}-${string}-${string}-${string}`) {
+        this.ownerUUID = tileOwnerUUID
+    }
+
+    removeOwner() {
+        this.ownerUUID = undefined
     }
 }
 
