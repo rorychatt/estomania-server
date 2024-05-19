@@ -1,6 +1,6 @@
 import { Vector2D } from "./Game";
 
-class Hexagon {
+export class Hexagon {
     position: Vector2D;
     tileType: PossibleTileType;
     ownerUUID?: `${string}-${string}-${string}-${string}-${string}`
