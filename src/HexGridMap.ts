@@ -26,10 +26,13 @@ class Hexagon {
 }
 
 export class HexGridMap {
+
     grid: Hexagon[][];
+    mapSize: Vector2D;
 
     constructor(mapSize: Vector2D) {
         this.grid = [];
+        this.mapSize = mapSize
         for (let x = 0; x < mapSize.x; x++) {
             this.grid[x] = [];
             for (let z = 0; z < mapSize.z; z++) {
@@ -40,6 +43,10 @@ export class HexGridMap {
 
     getGridData() {
         return this.grid;
+    }
+
+    getMapSize() {
+        return this.mapSize
     }
 
 }

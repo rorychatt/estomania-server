@@ -5,7 +5,7 @@ let cityCounter = 1;
 export class City {
 
     position: Vector2D
-    ownerUUID: `${string}-${string}-${string}-${string}-${string}`
+    ownerUUID: string
     name: string
 
     constructor(citySettings: CitySettings) {
@@ -25,6 +25,6 @@ export class City {
 
 export type CitySettings = {
     position: Vector2D
-    ownerUUID: `${string}-${string}-${string}-${string}-${string}`
+    ownerUUID: string
     name?: string
 }

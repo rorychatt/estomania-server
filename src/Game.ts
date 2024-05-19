@@ -1,6 +1,7 @@
 import { GameSettings } from "./GameSettings";
 import { HexGridMap } from "./HexGridMap";
 import { Player } from "./Player";
+import { Settler } from "./Unit";
 
 export class Game {
 
@@ -23,6 +24,23 @@ export class Game {
 
     addPlayer(player: Player) {
         this.currentPlayers.push(player)
+        this.spawnPlayerOnMap(player)
+    }
+
+    spawnPlayerOnMap(player: Player) {
+        const mapSize: Vector2D = this.hexGridMap.getMapSize();
+        const randomX = Math.floor(Math.random() * mapSize.x)
+        const randomZ = Math.floor(Math.random() * mapSize.z)
+
+        this.spawnSettlerUnitOnMap({ x: randomX, z: randomZ }, player)
+
+    }
+
+    spawnSettlerUnitOnMap(position: Vector2D, owner: Player) {
+
+        const settler = new Settler(owner.uuid, position)
+        owner.addUnit(settler)
+
     }
 
     removePlayerBySocketID(socketId: string) {
