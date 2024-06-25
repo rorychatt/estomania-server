@@ -1,5 +1,5 @@
-import { Vector2D } from "./Game"
+import { Vector2D } from "./Game";
 
 export type GameSettings = {
-    mapSize: Vector2D
-}
+  mapSize: Vector2D;
+};
