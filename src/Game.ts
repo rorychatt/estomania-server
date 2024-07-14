@@ -27,11 +27,14 @@ export class Game {
   }
 
   spawnPlayerOnMap(player: Player) {
-    const mapSize: Vector2D = this.hexGridMap.getMapSize();
-    const randomX = Math.floor(Math.random() * mapSize.x);
-    const randomZ = Math.floor(Math.random() * mapSize.z);
-
-    this.spawnSettlerUnitOnMap({ x: randomX, z: randomZ }, player);
+    this.hexGridMap.grid.forEach((row) => {
+      row.forEach((hex) => {
+        if (hex.tileType === "plains" && hex.ownerUUID === undefined) {
+          this.spawnSettlerUnitOnMap(hex.position, player);
+          return;
+        }
+      });
+    });
   }
 
   spawnSettlerUnitOnMap(position: Vector2D, owner: Player) {
