@@ -1,8 +1,10 @@
+import { randomUUID } from "crypto";
 import { Vector2D } from "./Game";
 
 export class Unit {
   movement: number;
   power: PowerCharacteristic;
+  uuid: `${string}-${string}-${string}-${string}-${string}`
   ownerUUID: string;
   position: Vector2D;
 
@@ -13,6 +15,7 @@ export class Unit {
       ranged: 10,
     };
     this.ownerUUID = ownerUUID;
+    this.uuid = randomUUID();
     this.position = position;
   }
 

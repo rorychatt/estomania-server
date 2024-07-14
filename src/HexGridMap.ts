@@ -3,6 +3,7 @@ import { Vector2D } from "./Game";
 export class Hexagon {
   position: Vector2D;
   tileType: PossibleTileType;
+  unitUUID?: `${string}-${string}-${string}-${string}-${string}`;
   ownerUUID?: `${string}-${string}-${string}-${string}-${string}`;
 
   constructor(position: Vector2D) {

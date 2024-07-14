@@ -27,17 +27,28 @@ export class Game {
   }
 
   spawnPlayerOnMap(player: Player) {
-    outerLoop: for (let row of this.hexGridMap.grid) {
+    let validHexes = [];
+
+    for (let row of this.hexGridMap.grid) {
       for (let hex of row) {
-        if (hex.tileType === "plains" && hex.ownerUUID === undefined) {
-          this.spawnSettlerUnitOnMap(hex.position, player);
-          break outerLoop;
+        if (
+          hex.tileType === "plains" &&
+          hex.ownerUUID === undefined &&
+          hex.unitUUID === undefined
+        ) {
+          validHexes.push(hex);
         }
       }
+    }
+
+    if (validHexes.length > 0) {
+      let randomHex = validHexes[Math.floor(Math.random() * validHexes.length)];
+      this.spawnSettlerUnitOnMap(randomHex.position, player);
     }
   }
   spawnSettlerUnitOnMap(position: Vector2D, owner: Player) {
     const settler = new Settler(owner.uuid, position);
+    this.hexGridMap.grid[position.x][position.z].unitUUID = settler.uuid;
     owner.addUnit(settler);
   }
 
