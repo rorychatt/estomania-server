@@ -27,16 +27,15 @@ export class Game {
   }
 
   spawnPlayerOnMap(player: Player) {
-    this.hexGridMap.grid.forEach((row) => {
-      row.forEach((hex) => {
+    outerLoop: for (let row of this.hexGridMap.grid) {
+      for (let hex of row) {
         if (hex.tileType === "plains" && hex.ownerUUID === undefined) {
           this.spawnSettlerUnitOnMap(hex.position, player);
-          return;
+          break outerLoop;
         }
-      });
-    });
+      }
+    }
   }
-
   spawnSettlerUnitOnMap(position: Vector2D, owner: Player) {
     const settler = new Settler(owner.uuid, position);
     owner.addUnit(settler);
