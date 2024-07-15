@@ -1,3 +1,4 @@
+import { randomUUID } from "crypto";
 import { Vector2D } from "./Game";
 
 export class Hexagon {
@@ -5,10 +6,12 @@ export class Hexagon {
   tileType: PossibleTileType;
   unitUUID?: `${string}-${string}-${string}-${string}-${string}`;
   ownerUUID?: `${string}-${string}-${string}-${string}-${string}`;
+  uuid: `${string}-${string}-${string}-${string}-${string}`;
 
   constructor(position: Vector2D) {
     this.position = position;
     this.tileType = this._getRandomTileType();
+    this.uuid = randomUUID();
   }
 
   _getRandomTileType(): PossibleTileType {
