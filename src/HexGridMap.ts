@@ -1,54 +1,56 @@
+import { randomUUID } from "crypto";
 import { Vector2D } from "./Game";
 
 export class Hexagon {
-    position: Vector2D;
-    tileType: PossibleTileType;
-    ownerUUID?: `${string}-${string}-${string}-${string}-${string}`
+  position: Vector2D;
+  tileType: PossibleTileType;
+  unitUUID?: `${string}-${string}-${string}-${string}-${string}`;
+  ownerUUID?: `${string}-${string}-${string}-${string}-${string}`;
+  uuid: `${string}-${string}-${string}-${string}-${string}`;
 
-    constructor(position: Vector2D) {
-        this.position = position;
-        this.tileType = this._getRandomTileType()
-    }
+  constructor(position: Vector2D) {
+    this.position = position;
+    this.tileType = this._getRandomTileType();
+    this.uuid = randomUUID();
+  }
 
-    _getRandomTileType(): PossibleTileType {
-        const terrains: PossibleTileType[] = ["plains", "water"];
-        const randomIndex = Math.floor(Math.random() * terrains.length);
-        return terrains[randomIndex];
-    }
+  _getRandomTileType(): PossibleTileType {
+    const terrains: PossibleTileType[] = ["plains", "water"];
+    const randomIndex = Math.floor(Math.random() * terrains.length);
+    return terrains[randomIndex];
+  }
 
-    setOwner(tileOwnerUUID: `${string}-${string}-${string}-${string}-${string}`) {
-        this.ownerUUID = tileOwnerUUID
-    }
+  setOwner(tileOwnerUUID: `${string}-${string}-${string}-${string}-${string}`) {
+    this.ownerUUID = tileOwnerUUID;
+  }
 
-    removeOwner() {
-        this.ownerUUID = undefined
-    }
+  removeOwner() {
+    this.ownerUUID = undefined;
+  }
 }
 
 export class HexGridMap {
+  grid: Hexagon[][];
+  mapSize: Vector2D;
 
-    grid: Hexagon[][];
-    mapSize: Vector2D;
-
-    constructor(mapSize: Vector2D) {
-        this.grid = [];
-        this.mapSize = mapSize
-        for (let x = 0; x < mapSize.x; x++) {
-            this.grid[x] = [];
-            for (let z = 0; z < mapSize.z; z++) {
-                this.grid[x][z] = new Hexagon({ x, z });
-            }
-        }
+  constructor(mapSize: Vector2D) {
+    this.grid = [];
+    this.mapSize = mapSize;
+    for (let x = 0; x < mapSize.x; x++) {
+      this.grid[x] = [];
+      for (let z = 0; z < mapSize.z; z++) {
+        this.grid[x][z] = new Hexagon({ x, z });
+      }
     }
+  }
 
-    getGridData() {
-        return this.grid;
-    }
+  getGridData() {
+    return this.grid;
+  }
 
-    getMapSize() {
-        return this.mapSize
-    }
-
+  getMapSize() {
+    return this.mapSize;
+  }
 }
 
-type PossibleTileType = "plains" | "water"
+type PossibleTileType = "plains" | "water";
