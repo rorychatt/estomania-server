@@ -1,6 +1,6 @@
 {
   "name": "estomania-server",
-  "version": "1.0.5-1",
+  "version": "1.0.5-2",
   "description": "server for estomania",
   "main": "index.js",
   "scripts": {
