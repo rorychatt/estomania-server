@@ -7,6 +7,7 @@ export class Player {
   socketId;
   cities: City[] = [];
   units: PossiblePlayerUnits[] = [];
+  nickname: string = "Player";
 
   constructor(socketId: string) {
     this.uuid = randomUUID();
