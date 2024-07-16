@@ -47,7 +47,7 @@ export class Game {
     }
   }
   spawnSettlerUnitOnMap(position: Vector2D, owner: Player) {
-    const settler = new Settler(owner.uuid, position);
+    const settler = new Settler(owner, position);
     this.hexGridMap.grid[position.x][position.z].unitUUID = settler.uuid;
     owner.addUnit(settler);
   }

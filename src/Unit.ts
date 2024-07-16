@@ -35,8 +35,8 @@ export class Unit {
 export class Settler extends Unit {
   name = "Settler";
 
-  constructor(ownerUUID: string, position: Vector2D) {
-    super(ownerUUID, position);
+  constructor(owner: Player, position: Vector2D) {
+    super(owner, position);
   }
 }
 
