@@ -1,3 +1,5 @@
+# UPD: Cancelled as CIV 7 got released
+
 # estomania-server
 server for estomania
 
